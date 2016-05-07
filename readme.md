@@ -107,6 +107,6 @@ vagrant provision
 ```
 
 Si vous aimez vivre dangereusement, vous pouvez lancer
-``̀`
+```
 vagrant ssh -c "wp plugin install nom_du_plugin --activate-network --activate --path=/var/www"
 ```
