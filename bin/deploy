@@ -4,7 +4,7 @@ WWW="/var/www/wordpress"
 
 echo "Compiling theme..."
 
-cd theme/
+cd theme
 
 composer install
 npm install
@@ -18,6 +18,6 @@ rsync --stats -t -P --recursive --exclude-from=bin/rsync.exclude.conf theme/ nui
 
 # We need to clean because gulp watch does not remove the dist/assets.json file
 echo "Cleaning..."
-cd theme/
+cd theme
 gulp clean
 cd -
