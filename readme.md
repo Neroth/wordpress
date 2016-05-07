@@ -70,8 +70,6 @@ Pour relancer plus tard: `./bin/server`
 
 Le thème est installé dans `./theme`. Il utilise Sass, Gulp, Bower et Composer.
 
-Normalement, il a déjà été compilé à la création de la machine virtuelle. Vous pouvez le refaire manuellement à l'aide des commandes
-
 ```
 $ cd theme
 $ npm install -g gulp bower
@@ -80,17 +78,8 @@ $ bower install
 $ composer install
 ```
 
-En cas de problème avec node-sass lancez la commande
-```
-npm uninstall gulp-sass && npm install gulp-sass --no-progress
-```
-C'est du au fait que node-sass a compilé des bianire sur la machine virtuelle qui ne sont pas compatible avec votre machine locale.
-
-
 Les fichiers source se trouvent dans `theme/assets`
-
 Les fichiers compilés se trouvent dans `theme/dist`
-
 Pour recompiler les assets à chaque modification de fichier, lancer la tâche `watch` :
 
 ```

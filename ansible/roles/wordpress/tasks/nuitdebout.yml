@@ -12,15 +12,24 @@
   when:     wp_config.stat.exists == false
   shell:    cp /vagrant/wp-config.php {{ dir }}/wp-config.php
 
-- name:       Import Datas
-  shell:      mysql --user={{database.user}} --password={{database.password}} {{database.name}} < /vagrant/dump/nuitdebout_multisite.sql
+- name:     Import Datas
+  shell:    mysql --user={{database.user}} --password={{database.password}} {{database.name}} < /vagrant/dump/nuitdebout_multisite.sql
+
+- name:     Repair database
+  shell:    wp db repair --path={{dir}}
+
+- name:     Change site url
+  shell:    wp search-replace  nuitdebout.fr nuitdebout.dev '{{database.prefix}}*_options' wp_blogs --path={{dir}}
+
+- name:     Do not handle https
+  shell:    wp search-replace  https://nuitdebout.dev http://nuitdebout.dev '{{database.prefix}}*_options' wp_blogs --path={{dir}}
 
 - name:       Install plugins
   with_items: plugins
   shell:      wp plugin install {{ item }} --activate-network --activate --path={{dir}}
 
 - name:       Link theme
-  shell:      ln -fs {{ theme_dir }} {{ dir }}/wp-content/themes/{{ theme }} 
+  shell:      ln -fs {{ theme_dir }} {{ dir }}/wp-content/themes/{{ theme }}
 
 - name:       Activate theme
-  shell:      wp theme activate {{ theme }} --path={{dir}}
+  shell:      wp theme enable {{ theme }} --network --activate --path={{dir}}

@@ -40,10 +40,6 @@
 - hosts: all
   user: vagrant
   vars:
-    admin:
-      email:    admin@admin.fr
-      password: password
-      user:     admin
     database:
       name:     nuitdebout
       user:     root
