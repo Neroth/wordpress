@@ -1,7 +1,7 @@
 ---
 - include: nuitdebout.yml
   vars:
-    dir: /var/www
+    dir: /var/www/nuitdebout
     theme: nuitdebout
     theme_dir: /vagrant/theme
 

@@ -8,9 +8,9 @@
 
   - name: Create global directory
     sudo: yes
-    shell: mkdir -p /etc/nginx/global
+    file: dest=/etc/nginx/global state=directory
 
-  - name: Compy wordpress configurations
+  - name: Copy wordpress configurations
     sudo: yes
     with_items: [multisite.conf, restrictions.conf, wordpress.conf]
     template: src={{item}} dest=/etc/nginx/global/{{item}}

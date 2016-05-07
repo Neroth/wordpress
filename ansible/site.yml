@@ -2,7 +2,7 @@
 - hosts: all
   sudo:  true
   vars:
-    doc_root: /var/www
+    doc_root: /var/www/nuitdebout
     main_domain: nuitdebout.dev
     sys_packages:
       - mcrypt
