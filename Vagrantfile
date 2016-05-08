@@ -16,6 +16,8 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder "./wordpress", "/var/www/nuitdebout", id: "application", nfs: $NFS
     config.vm.synced_folder "./theme", "/var/www/nuitdebout/wp-content/themes/nuitdebout",
         id: "theme", nfs: $NFS
+    config.vm.synced_folder "./logs", "/var/log/nginx", id: "logs", nfs: $NFS
+    config.vm.synced_folder "./uploads", "/var/www/nuitdebout/wp-content/uploads", id: "uploads", nfs: $NFS
 
     # Configure VirtualBox environment
     config.vm.provider :virtualbox do |v|
